@@ -21,40 +21,40 @@ app.use(cors())
 // }
 
 //Root 
-// app.get('/home',async (req,res)=>{
-//         try{
-//             //creates an array of random nums between 1 and 600 inclusive 
-//             let arr = [Math.floor(Math.random() * (600 - 1 + 1) + 1),Math.floor(Math.random() * (600 - 1 + 1) + 1),Math.floor(Math.random() * (600 - 1 + 1) + 1),Math.floor(Math.random() * (600 - 1 + 1) + 1),Math.floor(Math.random() * (600 - 1 + 1) + 1),Math.floor(Math.random() * (600 - 1 + 1) + 1),Math.floor(Math.random() * (600 - 1 + 1) + 1),Math.floor(Math.random() * (600 - 1 + 1) + 1),Math.floor(Math.random() * (600 - 1 + 1) + 1),Math.floor(Math.random() * (600 - 1 + 1) + 1)]
-//             const heros = []
-//             //runs a fetch call with each random num as a hero id and pushes to our heros arr. 
-//             await Promise.all(
-//                 arr.map(async (id) =>{
-//                      const response = await fetch(`https://superheroapi.com/api/${process.env.API_KEY}/${id}/image`)
-//                      const hero = await response.json()
-//                      heros.push(hero)
-//                 })
-//             )
-//             res.status(200).json(heros)
-//         }
-//     catch(err){
-//         res.status(400).json({
-//             message:err
-//         })
-//     }
-// })
+app.get('/home',async (req,res)=>{
+        try{
+            //creates an array of random nums between 1 and 600 inclusive 
+            let arr = [Math.floor(Math.random() * (600 - 1 + 1) + 1),Math.floor(Math.random() * (600 - 1 + 1) + 1),Math.floor(Math.random() * (600 - 1 + 1) + 1),Math.floor(Math.random() * (600 - 1 + 1) + 1),Math.floor(Math.random() * (600 - 1 + 1) + 1),Math.floor(Math.random() * (600 - 1 + 1) + 1),Math.floor(Math.random() * (600 - 1 + 1) + 1),Math.floor(Math.random() * (600 - 1 + 1) + 1),Math.floor(Math.random() * (600 - 1 + 1) + 1),Math.floor(Math.random() * (600 - 1 + 1) + 1)]
+            const heros = []
+            //runs a fetch call with each random num as a hero id and pushes to our heros arr. 
+            await Promise.all(
+                arr.map(async (id) =>{
+                     const response = await fetch(`https://superheroapi.com/api/${process.env.API_KEY}/${id}/image`)
+                     const hero = await response.json()
+                     heros.push(hero)
+                })
+            )
+            res.status(200).json(heros)
+        }
+    catch(err){
+        res.status(400).json({
+            message:err
+        })
+    }
+})
 
-// app.get('/:id', async (req,res)=>{
-//   try{
-//     const response = await fetch(`https://superheroapi.com/api/${process.env.API_KEY}/${req.params.id}`)
-//     const resData = await response.json()
-//     res.status(200).json(resData)
-//     }
-//    catch(err){
-//     res.status(400).json({
-//         message:err
-//     })
-//    }
-// })
+app.get('/:id', async (req,res)=>{
+  try{
+    const response = await fetch(`https://superheroapi.com/api/${process.env.API_KEY}/${req.params.id}`)
+    const resData = await response.json()
+    res.status(200).json(resData)
+    }
+   catch(err){
+    res.status(400).json({
+        message:err
+    })
+   }
+})
 
 
 // app.get('/search/:name', async (req,res)=>{
