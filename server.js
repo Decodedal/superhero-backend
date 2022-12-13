@@ -59,7 +59,7 @@ app.get('/:id', async (req,res)=>{
 
 // app.get('/search/:name', async (req,res)=>{
 //     try{
-//         const response = fetch(`https://superheroapi.com/api/10159112950491845/search/${req.params.name}`)
+//         const response = fetch(`https://superheroapi.com/api/${process.env.API_KEY}/search/${req.params.name}`)
 //         const resData = await (await response).json()
 //         res.status(200).json(resData)
 //     }
