@@ -57,18 +57,18 @@ app.get('/:id', async (req,res)=>{
 })
 
 
-// app.get('/search/:name', async (req,res)=>{
-//     try{
-//         const response = fetch(`https://superheroapi.com/api/10159112950491845/search/${req.params.name}`)
-//         const resData = await (await response).json()
-//         res.status(200).json(resData)
-//     }
-//     catch(err){
-//         res.status(400).json({
-//             message:err
-//         })
-//        } 
-// })
+app.get('/search/:name', async (req,res)=>{
+    try{
+        const response = fetch(`https://superheroapi.com/api/10159112950491845/search/${req.params.name}`)
+        const resData = await (await response).json()
+        res.status(200).json(resData)
+    }
+    catch(err){
+        res.status(400).json({
+            message:err
+        })
+       } 
+})
 
 app.get("/test", (req,res)=>{
     res.send("working")
